@@ -4,6 +4,9 @@ import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import RequireAuth from "./components/auth/RequireAuth";
 import Homepage from "./pages/Homepage";
+import Product from "./pages/Product";
+import Products from "./pages/Products";
+import ProductInfo from "./components/ProductInfo";
 
 function App() {
   return (
@@ -12,29 +15,24 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route
-          path="/"
+          path="/products"
           element={
             <RequireAuth>
-              <div>logged In</div>
+              <Products />
             </RequireAuth>
           }
-        />
-        <Route
-          path="/"
-          element={
-            <RequireAuth>
-              <div>logged In</div>
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/"
-          element={
-            <RequireAuth>
-              <div>logged In</div>
-            </RequireAuth>
-          }
-        />
+        >
+          <Route
+            path=":id"
+            element={
+              <RequireAuth>
+                <Product />
+              </RequireAuth>
+            }
+          >
+            <Route path=":id/info" element={<ProductInfo />} />
+          </Route>
+        </Route>
       </Route>
     </Routes>
   );

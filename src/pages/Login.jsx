@@ -1,3 +1,8 @@
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
+
 export default function Login() {
-  <div>Login</div>;
+  const loggedIn = useAuth(true);
+  if (loggedIn) return <Navigate to="/products" />;
+  return <div>Login</div>;
 }
