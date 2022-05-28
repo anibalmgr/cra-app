@@ -7,16 +7,18 @@ import Label from "../components/shared/Label";
 import * as yup from "yup";
 import AlertLabel from "../components/shared/AlertLabel";
 
-export default function Login() {
+export default function Register() {
   const validationSchema = yup.object().shape({
-    username: yup.string().required("Please type your username"),
+    email: yup.string().email().required("Please type your email"),
     password: yup.string().required("Please type your password"),
   });
 
   const loggedIn = useAuth(false);
   const formik = useFormik({
     initialValues: {
-      username: "",
+      email: "",
+      name: "",
+      surname: "",
       password: "",
     },
 
@@ -33,6 +35,8 @@ export default function Login() {
 
   if (loggedIn) return <Navigate to="/products" />;
 
+  console.log(formik.errors);
+
   return (
     <div className="h-full w-full flex flex-col justify-between pt-16 pb-8 sm:py-32 items-center">
       <div className="text-center">
@@ -44,18 +48,41 @@ export default function Login() {
         className="w-full flex flex-col gap-3 items-stretch sm:items-center pb-24 sm:pb-40"
         onSubmit={formik.handleSubmit}
       >
-        <Label htmlFor="username">Username</Label>
+        <Label htmlFor="name">First Name</Label>
         <Input
-          id="username"
-          name="username"
+          id="firstname"
+          name="firstname"
           type="text"
           onChange={formik.handleChange}
-          value={formik.values.username}
+          value={formik.values.firstname}
         />
-        {formik.touched.username && formik.errors.password && (
-          <AlertLabel>Please enter your username</AlertLabel>
+        {formik.touched.firstname && formik.errors.firstname && (
+          <AlertLabel>Please enter an email</AlertLabel>
         )}
-        <Label htmlFor="username">Username</Label>
+
+        <Label htmlFor="email">Last Name</Label>
+        <Input
+          id="lastname"
+          name="lastname"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.lastname}
+        />
+        {formik.touched.lastname && formik.errors.lastname && (
+          <AlertLabel>Please enter an email</AlertLabel>
+        )}
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+        />
+        {formik.touched.email && formik.errors.email && (
+          <AlertLabel>Please enter an email</AlertLabel>
+        )}
+        <Label htmlFor="password">Password</Label>
         <Input
           id="password"
           name="password"
@@ -64,11 +91,10 @@ export default function Login() {
           value={formik.values.password}
         />
         {formik.touched.password && formik.errors.password && (
-          <AlertLabel>Please enter your password</AlertLabel>
+          <AlertLabel>Please enter a password</AlertLabel>
         )}
-
         <Button className="mt-8" onClick={formik.handleSubmit}>
-          Login
+          Sign Up
         </Button>
       </form>
     </div>

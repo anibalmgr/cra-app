@@ -10,5 +10,7 @@ test("renders homepage", () => {
       <App />
     </Router>
   );
-  expect(screen.getByText("Layout")).toBeInTheDocument();
+  expect(
+    screen.getByText("Connect to all your Domin products")
+  ).toBeInTheDocument();
 });
