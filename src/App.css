@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Franklin Gothic Book Regular';
+    font-style: normal;
+    src: url("assets/fonts/Franklin Gothic Book Regular.ttf");
+}
+
+body {
+   font-family: "Franklin Gothic Book Regular" ;
+}
