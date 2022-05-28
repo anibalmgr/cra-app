@@ -1,6 +1,19 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+## TODO
+- Create react app
+- CI /CD 
+- Create visual assets
+- Configure Tailwind colours
+- Auth
+  - React query
+  - Define Api Calls
+  - Handle errors
+- Homepage
+  - Register a product
+
 
 ## Available Scripts
 
