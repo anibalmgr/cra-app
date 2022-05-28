@@ -1,8 +1,14 @@
 import { render, screen } from "@testing-library/react";
+import { createMemoryHistory } from "history";
+import { Router } from "react-router-dom";
 import App from "./App";
 
-test("renders learn react link", () => {
-  render(<App />);
-  const linkElement = screen.getByText("Empty CRA Test Number 3");
-  expect(linkElement).toBeInTheDocument();
+test("renders homepage", () => {
+  const history = createMemoryHistory();
+  render(
+    <Router location={history.location} navigator={history}>
+      <App />
+    </Router>
+  );
+  expect(screen.getByText("Layout")).toBeInTheDocument();
 });
