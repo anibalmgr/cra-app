@@ -1,6 +1,6 @@
 export function getToken(name) {
-  const token = window.localStorage.getItem(name);
-  console.log(token);
+  const token = window.localStorage.getItem("AUTH_TOKEN");
+  return token;
 }
 
 export function deleteToken(name) {
@@ -12,11 +12,12 @@ export function getUrl(request) {
 }
 
 export async function request(url, options) {
-  const token = getToken("AUTH_TOKEN");
-  return fetch(getUrl(url), {
+  // this token has to be send with every request
+  // const token = getToken("AUTH_TOKEN");
+
+  const res = await fetch(getUrl(url), {
     ...options,
-    headers: { "Content-Type": "application/json", TOKEN: token },
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+    mode: "cors",
+  });
+  return res.json();
 }
