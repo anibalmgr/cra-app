@@ -3,11 +3,13 @@
 
 
 ## TODO
-- Create react app
-- CI /CD 
 - Create visual assets
-- Configure Tailwind colours
 - Auth
+  - Create mock server
+  - send login request with username and password
+  - if valid return an token
+  - store the token in local storage
+  - on every api call validate token
   - React query
   - Define Api Calls
   - Handle errors

@@ -1,19 +1,20 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import Button from "../components/shared/Button";
 import Input from "../components/shared/Input";
 import Label from "../components/shared/Label";
 import * as yup from "yup";
 import AlertLabel from "../components/shared/AlertLabel";
+import { fetchLogin } from "../utils/authAPI";
+import { useValidateAuth } from "../hooks/useValidateAuth";
 
 export default function Login() {
+  let navigate = useNavigate();
   const validationSchema = yup.object().shape({
     username: yup.string().required("Please type your username"),
     password: yup.string().required("Please type your password"),
   });
 
-  const loggedIn = useAuth(false);
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -22,6 +23,8 @@ export default function Login() {
 
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      fetchLogin();
+      navigate("/product");
     },
     validate: () => {
       if (formik.status) {
@@ -31,7 +34,10 @@ export default function Login() {
     validationSchema,
   });
 
-  if (loggedIn) return <Navigate to="/products" />;
+  const isAuth = useValidateAuth();
+  console.log(isAuth);
+
+  if (isAuth) return <Navigate to="/products" />;
 
   return (
     <div className="h-full w-full flex flex-col justify-between pt-16 pb-8 sm:py-32 items-center">
