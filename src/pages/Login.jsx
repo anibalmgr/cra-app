@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { sendLogin, validateLogin } from "../utils/authAPI";
 import { useFormik } from "formik";
 import Button from "../components/shared/Button";
 import Input from "../components/shared/Input";
@@ -13,7 +13,8 @@ export default function Login() {
     password: yup.string().required("Please type your password"),
   });
 
-  const loggedIn = useAuth(false);
+  const loggedIn = validateLogin();
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -22,6 +23,13 @@ export default function Login() {
 
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      const response = sendLogin({
+        username: values.username,
+        password: values.password,
+      });
+      fetch("http://localhost:3001/login").then((response) =>
+        console.log(response)
+      );
     },
     validate: () => {
       if (formik.status) {
@@ -31,7 +39,7 @@ export default function Login() {
     validationSchema,
   });
 
-  if (loggedIn) return <Navigate to="/products" />;
+  if (!loggedIn) return <Navigate to="/products" />;
 
   return (
     <div className="h-full w-full flex flex-col justify-between pt-16 pb-8 sm:py-32 items-center">

@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+// import { useAuth } from "../hooks/authAPI";
 import { useFormik } from "formik";
 import Button from "../components/shared/Button";
 import Input from "../components/shared/Input";
@@ -13,7 +13,7 @@ export default function Register() {
     password: yup.string().required("Please type your password"),
   });
 
-  const loggedIn = useAuth(false);
+  const loggedIn = false;
   const formik = useFormik({
     initialValues: {
       email: "",
