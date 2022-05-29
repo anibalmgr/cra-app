@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { sendLogin, validateLogin } from "../utils/authAPI";
+import { validateLogin } from "../utils/authAPI";
 import { useFormik } from "formik";
 import Button from "../components/shared/Button";
 import Input from "../components/shared/Input";
@@ -23,10 +23,10 @@ export default function Login() {
 
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-      const response = sendLogin({
-        username: values.username,
-        password: values.password,
-      });
+      // const response = sendLogin({
+      //   username: values.username,
+      //   password: values.password,
+      // });
       fetch("http://localhost:3001/login").then((response) =>
         console.log(response)
       );

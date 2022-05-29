@@ -1,11 +1,10 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { getCookie } from "../../utils/authAPI";
 
 export default function RequireAuth(props) {
-  // let auth = useAuth(true);
+  let auth = true;
   let location = useLocation();
 
-  if (true) {
+  if (auth) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

@@ -10,7 +10,7 @@ export async function sendLogin(payload) {
     });
     if (!response.ok) {
       console.log(response);
-      const errorResponse = await response.json();
+      // const errorResponse = await response.json();
       // throw errorResponse;
     }
     const token = response.JSON().body;
@@ -31,7 +31,7 @@ export async function sendLogout() {
       const errorResponse = await response.JSON();
       throw errorResponse;
     }
-    const data = await response.json();
+    // const data = await response.json();
   } catch (err) {
     const error = err;
     throw error;
@@ -47,7 +47,7 @@ export async function validateLogin() {
       const errorResponse = await response.JSON();
       throw errorResponse;
     }
-    const data = await response.json();
+    // const data = await response.json();
   } catch (err) {
     const error = err;
     throw error;
