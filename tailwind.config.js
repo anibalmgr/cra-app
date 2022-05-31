@@ -2,6 +2,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: {
+      white: "#FFFFFF",
       contrast: "#20677C",
       "contrast-hover": "#267992",
       neutral: "#F3F2F2",
@@ -14,7 +15,21 @@ module.exports = {
       contrast2: "#EA6686",
       "contrast2-light": "#F9D2DC",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        search: "url(assets/icons/search.svg)",
+        arrow: "url(assets/icons/arrowDown.svg)",
+      },
+      keyframes: {
+        enter: {
+          "0%": { transform: "translate(300px)" },
+          "100%": { transform: "none" },
+        },
+      },
+      animation: {
+        enter: "enter 1.5s 1",
+      },
+    },
   },
   plugins: [],
 };

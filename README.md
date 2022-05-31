@@ -1,23 +1,56 @@
 # Getting Started with Create React App
+to install:
 
+    git clone https://github.com/anibalmgr/cra-app.git
+    cd cra-app
+    npm i
+    npm start
 
+There is a simple API running in [heroku](https://server-d-task.herokuapp.com/) if you want to start the api locally:
+    cd api
+    run 'node app.js'
+Then go to /src/utils/api.js comment the heroku url and uncomment the local url
 
-## TODO
-- Create visual assets
-- Auth
-  - Create mock server
-  - send login request with username and password
-  - if valid return an token
-  - store the token in local storage
-  - on every api call validate token
-  - React query
-  - Define Api Calls
-  - Handle errors
+## What has been done:
+### design:
+- Vectorize icons and logos
+- Check and save colour and font variables
+- Download product images
+
+### setup
+- Basic CI /CD (tests not implemented) with github and heroku
+- Micro API to get some data
+
+### npm libraries
+- Tailwind, probably my favourite library, with configuration of colours.
+- React router with basic routing
+- React query for api calls, ideally I like to add hooks to handle different API calls, but becasue of the time I decided to just call useQuery in every component.
+- Formik that makes it easier to manage the states in forms.
+
+### Deliveries
 - Homepage
-  - Register a product
+- Login page, calls the api and receives a token it is storaged into the local storage
+- Register new user
+- Products dashboard that gets all the products from the API, with a search input that returns any substring matching the query.
+
+### To be done
+- Login with cookie instead of a string, could be with jwt.
+- Error handling when fetching data
+- Implement error boundary
+- unit tests and mocking api for testing
+- Plots
+- And design and develop the whole app
 
 
-## Available Scripts
+## API Endpoints
+
+- GET:/login
+- GET:/user
+- GET:/products
+- GET:/images/:id
+
+
+## Create React App info:
 
 In the project directory, you can run:
 

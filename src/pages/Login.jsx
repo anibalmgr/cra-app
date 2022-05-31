@@ -24,7 +24,7 @@ export default function Login() {
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
       fetchLogin();
-      navigate("/product");
+      navigate("/products");
     },
     validate: () => {
       if (formik.status) {
@@ -35,7 +35,6 @@ export default function Login() {
   });
 
   const isAuth = useValidateAuth();
-  console.log(isAuth);
 
   if (isAuth) return <Navigate to="/products" />;
 
