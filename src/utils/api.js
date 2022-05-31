@@ -8,7 +8,9 @@ export function deleteToken(name) {
 }
 
 export function getUrl(request) {
-  return `http://localhost:3001/${request}`;
+  // uncoment the line below if you want to use the local API, don't forget to start the api on the terminal, cd api node app.js
+  // return `http://localhost:3001/${request}`;
+  return `https://server-d-task.herokuapp.com/${request}`;
 }
 
 export async function request(url, options) {

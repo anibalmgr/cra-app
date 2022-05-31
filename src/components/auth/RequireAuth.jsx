@@ -1,10 +1,12 @@
 import { Navigate, useLocation } from "react-router-dom";
+import { useValidateAuth } from "../../hooks/useValidateAuth";
 
 export default function RequireAuth(props) {
-  let auth = true;
+  let auth = useValidateAuth();
   let location = useLocation();
 
-  if (auth) {
+  console.log(auth);
+  if (!auth) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
