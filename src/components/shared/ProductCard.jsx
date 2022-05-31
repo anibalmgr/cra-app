@@ -12,7 +12,7 @@ function ProductImg({ type }) {
 export default function ProductCard(props) {
   return (
     <Link to={`/products/${props.sn}`}>
-      <div className="flex drop-shadow-xl h-auto bg-white w-[90vw] max-w-md gap-3 py-4 px-1">
+      <div className="flex drop-shadow-xl h-auto bg-white w-[90vw] max-w-md sm:w-auto sm:max-w-sm sm:h-full gap-3 py-4 px-1">
         <div className="w-36">
           <ProductImg type={props.type} />
         </div>

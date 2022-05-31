@@ -7,12 +7,13 @@ import * as yup from "yup";
 import AlertLabel from "../components/shared/AlertLabel";
 import { fetchLogin } from "../utils/authAPI";
 import { useValidateAuth } from "../hooks/useValidateAuth";
+import LogoItem from "../components/shared/LogoItem";
 
 export default function Login() {
   let navigate = useNavigate();
   const validationSchema = yup.object().shape({
-    username: yup.string().required("Please type your username"),
-    password: yup.string().required("Please type your password"),
+    username: yup.string().required("Please type any username"),
+    password: yup.string().required("Please type any password"),
   });
 
   const formik = useFormik({
@@ -22,7 +23,6 @@ export default function Login() {
     },
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       fetchLogin();
       navigate("/products");
     },
@@ -39,38 +39,38 @@ export default function Login() {
   if (isAuth) return <Navigate to="/products" />;
 
   return (
-    <div className="h-full w-full flex flex-col justify-between pt-16 pb-8 sm:py-32 items-center">
-      <div className="text-center">
-        <img src="assets/images/logomark.png" alt="" />
-        <p className="text-4xl md:text-7xl font-bold">DOMIN</p>
-        <p className="sm:text-3xl">Ascend</p>
-      </div>
+    <div className="h-full w-full flex flex-col justify-between pt-12 pb-8 sm:py-12 items-center">
+      <LogoItem />
       <form
         className="w-full flex flex-col gap-3 items-stretch sm:items-center pb-24 sm:pb-40"
         onSubmit={formik.handleSubmit}
       >
-        <Label htmlFor="username">Username</Label>
-        <Input
-          id="username"
-          name="username"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.username}
-        />
-        {formik.touched.username && formik.errors.password && (
-          <AlertLabel>Please enter your username</AlertLabel>
-        )}
-        <Label htmlFor="username">Username</Label>
-        <Input
-          id="password"
-          name="password"
-          type="password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-        {formik.touched.password && formik.errors.password && (
-          <AlertLabel>Please enter your password</AlertLabel>
-        )}
+        <Label htmlFor="username">
+          Username
+          <Input
+            id="username"
+            name="username"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.username}
+          />
+          {formik.touched.username && formik.errors.password && (
+            <AlertLabel>Please enter any username</AlertLabel>
+          )}
+        </Label>
+        <Label htmlFor="username">
+          Password
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
+          {formik.touched.password && formik.errors.password && (
+            <AlertLabel>Please enter any password</AlertLabel>
+          )}
+        </Label>
 
         <Button className="mt-8" onClick={formik.handleSubmit}>
           Login
