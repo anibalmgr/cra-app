@@ -58,7 +58,7 @@ export default function Register() {
             value={formik.values.firstname}
           />
           {formik.touched.firstname && formik.errors.firstname && (
-            <AlertLabel>Please enter any email</AlertLabel>
+            <AlertLabel>Please enter any firstname</AlertLabel>
           )}
         </Label>
 
