@@ -4,11 +4,12 @@ import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import RequireAuth from "./components/auth/RequireAuth";
 import Homepage from "./pages/Homepage";
-import Product from "./pages/Product";
+// import Product from "./pages/Product";
 import Products from "./pages/Products";
 import ProductInfo from "./components/ProductInfo";
 import Register from "./pages/Register";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Dashboard from "./pages/Dashboard";
 
 export const queryClient = new QueryClient();
 
@@ -21,22 +22,15 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/products"
+            path="/"
             element={
               <RequireAuth>
-                <Products />
+                <Dashboard />
               </RequireAuth>
             }
           >
-            <Route
-              path=":id"
-              element={
-                <RequireAuth>
-                  <Product />
-                </RequireAuth>
-              }
-            >
-              <Route path=":id/info" element={<ProductInfo />} />
+            <Route path="/products" element={<Products />}>
+              <Route path="/products/:id" element={<ProductInfo />} />
             </Route>
           </Route>
         </Route>

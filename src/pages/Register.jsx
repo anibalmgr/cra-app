@@ -35,8 +35,6 @@ export default function Register() {
 
   if (loggedIn) return <Navigate to="/products" />;
 
-  console.log(formik.errors);
-
   return (
     <div className="h-full w-full flex flex-col justify-between pt-16 pb-8 sm:py-32 items-center">
       <div className="text-center">
