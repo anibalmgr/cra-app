@@ -48,7 +48,7 @@ export default function Products() {
     );
   }
 
-  if (status === "error") {
+  if (status === "error" && !data) {
     return (
       <Toast message="Error loading your products, please reload the page" />
     );
@@ -81,7 +81,7 @@ export default function Products() {
             />
           </div>
         </div>
-        <div className="flex flex-col w-full h-full gap-4 overflow-x-auto pt-4">
+        <div className="flex flex-col sm:flex-row md:justify-center sm:flex-wrap h-full max-w-full gap-4 overflow-x-auto pt-4">
           {filterProducts.map((prod, i) => (
             <ProductCard
               key={`${prod.sn}`}
