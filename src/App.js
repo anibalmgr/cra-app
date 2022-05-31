@@ -12,6 +12,9 @@ import Product from "./pages/Product";
 import ProductInfo from "./components/ProductInfo";
 import ProductConfigure from "./components/ProductConfigure";
 import ProductReports from "./components/ProductReports";
+import Charts from "./pages/Charts";
+import Notifications from "./pages/Notifications";
+import Settings from "./pages/Settings";
 
 export const queryClient = new QueryClient();
 
@@ -43,6 +46,9 @@ function App() {
                 element={<ProductReports />}
               />
             </Route>
+            <Route path="/charts" element={<Charts />} />
+            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/settings" element={<Settings />} />
           </Route>
         </Route>
       </Routes>
