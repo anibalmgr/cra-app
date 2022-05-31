@@ -5,14 +5,8 @@ export async function fetchProducts() {
   return res;
 }
 
-export async function fetchProduct() {
-  const res = await request("login");
-  return res.JSON;
+export async function fetchProduct(id) {
+  // The api returns always the same data, but it should return the product info based on the serial number
+  const res = await request(`products/${id}`);
+  return res;
 }
-
-// export async function fetchProductImg(type) {
-//   const imgTag = type.replace(/\s+/g, "").toLowerCase();
-//   const res = await request(`images/${imgTag}`);
-//   console.log(res);
-//   return res.JSON;
-// }

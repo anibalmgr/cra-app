@@ -3,10 +3,10 @@ import Icon from "../components/shared/Icon";
 import { ReactComponent as Logomark } from "../assets/images/logomark.svg";
 
 const links = [
-  { to: "/products", icon: "dashboard" },
-  { to: "/chats", icon: "chart" },
-  { to: "/notifications", icon: "notification" },
-  { to: "/settings", icon: "settings" },
+  { to: "products", icon: "dashboard" },
+  { to: "charts", icon: "chart" },
+  { to: "notifications", icon: "notification" },
+  { to: "settings", icon: "settings" },
 ];
 
 export default function Dashboard() {

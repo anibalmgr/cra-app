@@ -48,7 +48,7 @@ export default function Products() {
     );
   }
 
-  if (status === "error") {
+  if (status === "error" && !data) {
     return (
       <Toast message="Error loading your products, please reload the page" />
     );
@@ -56,7 +56,7 @@ export default function Products() {
 
   if (status === "success" && data && filterProducts) {
     return (
-      <div className="flex md:pl-24 flex-col w-full h-full">
+      <div className="flex md:pl-24 flex-col w-full h-full px-4">
         <header className="fixed top-0 inset-x-0 flex h-16 px-4 w-screen items-center justify-between md:justify-end z-10">
           <div className="flex items-center gap-3 justify-start md:hidden">
             <Logomark className="h-10 w-auto" />
@@ -81,7 +81,7 @@ export default function Products() {
             />
           </div>
         </div>
-        <div className="flex flex-col w-full h-full gap-4 overflow-x-auto pt-4">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap h-full max-w-full gap-4 overflow-x-auto pt-4">
           {filterProducts.map((prod, i) => (
             <ProductCard
               key={`${prod.sn}`}

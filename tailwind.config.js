@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     colors: {
       white: "#FFFFFF",
+      black: "#0D0C0C",
       contrast: "#20677C",
       "contrast-hover": "#267992",
       neutral: "#F3F2F2",
