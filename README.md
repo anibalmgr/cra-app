@@ -7,8 +7,10 @@ to install:
     npm start
 
 There is a simple API running in [heroku](https://server-d-task.herokuapp.com/) if you want to start the api locally:
+
     cd api
     run 'node app.js'
+    
 Then go to /src/utils/api.js comment the heroku url and uncomment the local url
 
 ## What has been done:
