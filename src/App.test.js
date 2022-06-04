@@ -11,6 +11,6 @@ test("renders homepage", () => {
     </Router>
   );
   expect(
-    screen.getByText("Connect to all your Domin products")
+    screen.getByText("Live updates from your products")
   ).toBeInTheDocument();
 });
