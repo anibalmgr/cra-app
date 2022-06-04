@@ -18,7 +18,7 @@ app.get("/products", function (__, res) {
   res.sendFile(__dirname + "/data/products.json");
 });
 app.get("/images/:image", (req, res) => {
-  res.sendFile(__dirname + `/data/images/${req.params.image}.webp`);
+  res.sendFile(__dirname + `/data/images/${req.params.image}.jpg`);
 });
 app.get("/products/:id", (__, res) => {
   res.sendFile(__dirname + `/data/product.json`);

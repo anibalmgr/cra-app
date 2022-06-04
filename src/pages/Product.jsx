@@ -26,7 +26,7 @@ export default function Product() {
     );
   }
 
-  const { sn, type, location, status: productStatus } = data;
+  const { sn, product, location, status: productStatus } = data;
 
   const links = [
     {
@@ -47,14 +47,14 @@ export default function Product() {
     <div className="flex md:pl-24 flex-col w-full h-full">
       <div className="flex gap-3 items-center pt-4 px-4">
         <Link to="/products">
-          <Icon className="w-8" name="back" />
+          <Icon className="w-8 stroke-neutral-900 hover:stroke-neutral-800" name="back" />
         </Link>
         <p>{sn}</p>
       </div>
       <div className="px-4">
         <ProductCard
           sn={sn}
-          type={type}
+          product={product}
           location={location}
           status={productStatus}
         />

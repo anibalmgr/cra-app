@@ -13,7 +13,7 @@ export default function Tabs({ links }) {
           <p
             className={`w-[30vw] text-center max-w-xs ${
               isLocation[0].link === link
-                ? "text-contrast border-b-2 border-b-contrast pb-2"
+                ? "text-green-600 border-b-2 border-b-green-600 pb-2"
                 : ""
             } `}
           >

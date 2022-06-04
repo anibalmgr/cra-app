@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import useOutsideClick from "../../hooks/useOutsideClick";
 
-export default function Dropdown({ title, list, onClick, type }) {
+export default function Dropdown({ title, list, onClick, product }) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef();
 
@@ -28,15 +28,15 @@ export default function Dropdown({ title, list, onClick, type }) {
       ref={ref}
       className="flex flex-col content-start relative"
     >
-      <div className="text-left rounded py-1 pl-2 pr-8 bg-main-light bg-arrow bg-no-repeat bg-[length:10px_12px] bg-[position:92%_50%]">
+      <div className="text-left rounded py-1 pl-2 pr-8 bg-orange-200 bg-arrow bg-no-repeat bg-[length:10px_12px] bg-[position:92%_50%]">
         {title}
       </div>
 
       {isOpen && (
-        <div className="absolute top-8 min-w-max flex flex-col gap-2 bg-white py-2 px-1 drop-shadow-2xl">
+        <div className="absolute top-8 min-w-max flex flex-col gap-2 bg-neutral-0 py-2 px-1 drop-shadow-2xl">
           {singleList.map((i, id) => (
             <label key={`${i}${id}`} className="flex gap-2">
-              <input onClick={onClick} name={type} type="checkbox" value={i} />
+              <input onClick={onClick} name={product} type="checkbox" value={i} />
               {i}
             </label>
           ))}
