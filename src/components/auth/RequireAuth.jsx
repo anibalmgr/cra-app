@@ -6,7 +6,7 @@ export default function RequireAuth(props) {
   let {isAuth, status} = useValidateAuth();
   let location = useLocation();
 
-  if(status == "loading"){
+  if(status === "loading"){
     return (
       <div className="w-full h-full flex items-center justify-center">
         <Loading />
