@@ -1,14 +1,15 @@
 import { request } from "./api";
 
-
-export async function fetchRegister(user){
-  console.log("register function called", user);
+export async function fetchRegister(user) {
   const res = await request("register", {
-    method: 'POST',
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(user),
-    credentials: "include",
-  })
-  return res
+  });
+  return res;
 }
 
 export async function fetchLogin() {
@@ -22,10 +23,8 @@ export async function validateLogin() {
   return res.token;
 }
 
-
-
 // References
-// 
+//
 // export async function sendLogin(payload: LoginRequest): Promise<User> {
 //   try {
 //     const response = await request("/auth/login", {

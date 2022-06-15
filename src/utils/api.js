@@ -19,8 +19,7 @@ export async function request(url, options) {
   console.log("request api called with", getUrl(url), options);
   const res = await fetch(getUrl(url), {
     ...options,
-    method: "POST",
-    mode: "cors",
+    credentials: "include"
   });
   const data = await res.json();
   console.log(data);
