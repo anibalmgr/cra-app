@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getUrl } from "../../utils/api";
+import { getUrl } from "../../api/api";
 
 function ProductImg({ product, className }) {
   const imgTag = product.replace(/\s+/g, "").toLowerCase();

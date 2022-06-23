@@ -6,6 +6,7 @@ export default function Input(props) {
           ? "bg-search bg-no-repeat bg-[length:20px_20px] bg-[position:5%_50%] pl-12"
           : ""
       }`}
+      type={props.type}
       id={props.id}
       name={props.name}
       product={props.product}

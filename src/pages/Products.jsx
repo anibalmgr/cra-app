@@ -7,7 +7,7 @@ import Input from "../components/shared/Input";
 import Loading from "../components/shared/Loading";
 import ProductCard from "../components/shared/ProductCard";
 import Toast from "../components/shared/Toast";
-import { fetchProducts } from "../utils/productsAPI";
+import { fetchProducts } from "../api/productsAPI";
 
 export default function Products() {
   const [filterProducts, setFilterProducts] = useState([]);
