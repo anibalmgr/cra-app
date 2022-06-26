@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 // import { useAuth } from "../hooks/authAPI";
 import { useFormik } from "formik";
 import Button from "../components/shared/Button";
@@ -7,10 +7,10 @@ import Label from "../components/shared/Label";
 import * as yup from "yup";
 import AlertLabel from "../components/shared/AlertLabel";
 import LogoItem from "../components/shared/LogoItem";
-import { fetchLogin } from "../utils/authAPI";
+import { fetchRegister } from "../utils/authAPI";
 
 export default function Register() {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   const validationSchema = yup.object().shape({
     firstname: yup.string().required().required("Please type your firstname"),
     lastname: yup.string().required().required("Please type your lastname"),
@@ -28,8 +28,7 @@ export default function Register() {
     },
 
     onSubmit: (values) => {
-      fetchLogin();
-      navigate("/products");
+      fetchRegister({first_name: values.firstname, last_name: values.lastname, email: values.email, password: values.password});
     },
     validate: () => {
       if (formik.status) {
@@ -42,7 +41,7 @@ export default function Register() {
   if (loggedIn) return <Navigate to="/products" />;
 
   return (
-    <div className="h-full w-full flex flex-col justify-between pt-12 pb-8 sm:py-12items-center overflow-hidden">
+    <div className="h-full w-full overflow-y-auto flex flex-col justify-between pt-12 pb-8 sm:py-12items-center overflow-hidden">
       <LogoItem />
       <form
         className="w-full flex flex-col gap-2 items-stretch sm:items-center pb-24 sm:pb-40"
@@ -58,7 +57,7 @@ export default function Register() {
             value={formik.values.firstname}
           />
           {formik.touched.firstname && formik.errors.firstname && (
-            <AlertLabel>Please enter any email</AlertLabel>
+            <AlertLabel>Please enter any firstname</AlertLabel>
           )}
         </Label>
 

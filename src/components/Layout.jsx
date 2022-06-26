@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 export default function Layout(props) {
   return (
-    <div className="w-screen h-screen flex py-4 px-4">
+    <div className="w-screen h-screen flex py-4 text-neutral-900">
       <Outlet />
     </div>
   );

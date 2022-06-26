@@ -8,7 +8,12 @@
     src: url("assets/fonts/Franklin Gothic Book Regular.ttf");
 }
 
+@font-face {
+    font-family: 'JetBrains';
+    font-style: normal;
+    src: url("assets/fonts/JetBrainsMono.ttf");
+}
+
 body {
-   font-family: "Franklin Gothic Book Regular" ;
-   color: "#6B6B6B";
+   font-family: "JetBrains" ;
 }

@@ -12,10 +12,9 @@ export default function Homepage() {
       </div>
       <div className="text-center flex flex-col gap-3 sm:gap-6 px-3">
         <p className="text-xl sm:text-3xl">
-          Connect to all your Domin products
+          Live updates from your products
           <p className="text-sm sm:text-lg pt-1 sm:pt-4">
-            Configure and access data from your devices remotely, in a secure
-            manner
+            Configure, see live updates and access data from your products
           </p>
         </p>
       </div>

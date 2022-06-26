@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logomark } from "../assets/images/logomark.svg";
 import Dropdown from "../components/shared/Dropdown";
 import Icon from "../components/shared/Icon";
 import Input from "../components/shared/Input";
@@ -56,18 +55,15 @@ export default function Products() {
 
   if (status === "success" && data && filterProducts) {
     return (
-      <div className="flex md:pl-24 flex-col w-full h-full">
-        <header className="fixed top-0 inset-x-0 flex h-16 px-4 w-screen items-center justify-between md:justify-end z-10">
-          <div className="flex items-center gap-3 justify-start md:hidden">
-            <Logomark className="h-10 w-auto" />
-            <p className="font-bold text-2xl">ASCEND</p>
-          </div>
-          <Link to="add">
-            <Icon name="add" />
+      <div className="flex flex-col md:pl-24 w-full h-full px-4">
+        <header className="flex flex-wrap flex-row-reverse justify-between w-full gap-2 z-10">
+          <Link className="self-end" to="add">
+            <Icon name="add" className="w-8 h-8 stroke-neutral-900 hover:stroke-neutral-800" />
           </Link>
-        </header>
-        <div className="flex flex-col gap-2 pt-14 pb-2 md:pt-0 z-10 w-full justify-start">
+
           <Input icon onChange={handleSearch} />
+        </header>
+        <div className="flex flex-col gap-2 pt-14 pb-2 z-10 w-full justify-start">
           <div className="flex gap-2 w-[90vw] max-w-sm sm:w-sm">
             <Dropdown
               title="Location"
@@ -75,18 +71,18 @@ export default function Products() {
               list={filterProducts.map((p) => p.location)}
             />
             <Dropdown
-              title="Product type"
-              type="type"
-              list={filterProducts.map((p) => p.type)}
+              title="Product"
+              product="product"
+              list={filterProducts.map((p) => p.product)}
             />
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row md:justify-center sm:flex-wrap h-full max-w-full gap-4 overflow-x-auto pt-4">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap h-full max-w-full gap-4 overflow-x-auto pt-4 pb-24 md:pb-4">
           {filterProducts.map((prod, i) => (
             <ProductCard
               key={`${prod.sn}`}
               sn={prod.sn}
-              type={prod.type}
+              product={prod.product}
               location={prod.location}
               status={prod.status}
             />

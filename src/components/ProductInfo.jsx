@@ -1,3 +1,3 @@
 export default function ProductInfo() {
-  return <div>Product Info</div>;
+  return <div className="text-center w-full">Product Info</div>;
 }
