@@ -1,16 +1,27 @@
-export function getToken(name) {
-  const token = window.localStorage.getItem("AUTH_TOKEN");
-  return token;
+import axios from "axios";
+
+export function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts?.pop()?.split(";").shift();
 }
 
 export function deleteToken(name) {
   window.localStorage.removeItem(name);
 }
 
+export const client = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  withCredentials: true,
+  headers: {
+    "Content-type": "application/json",
+    "X-CSRF-TOKEN": getCookie("csrf_access_token") || "",
+  },
+  xsrfCookieName: "access_token",
+});
+
 export function getUrl(request) {
-  // uncoment the line below if you want to use the local API, don't forget to start the api on the terminal, cd api node app.js
-  return `http://localhost:3001/${request}`;
-  // return `https://server-d-task.herokuapp.com/${request}`;
+  return `${process.env.REACT_APP_API_URL}/${request}`;
 }
 
 export async function request(url, options) {
@@ -19,23 +30,12 @@ export async function request(url, options) {
   console.log("request api called with", getUrl(url), options);
   const res = await fetch(getUrl(url), {
     ...options,
-    credentials: "include"
+    credentials: "include",
   });
   const data = await res.json();
   console.log(data);
   return data;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // Example
 

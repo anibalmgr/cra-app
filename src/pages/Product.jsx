@@ -5,7 +5,7 @@ import Loading from "../components/shared/Loading";
 import ProductCard from "../components/shared/ProductCard";
 import Tabs from "../components/shared/Tabs";
 import Toast from "../components/shared/Toast";
-import { fetchProduct } from "../utils/productsAPI";
+import { fetchProduct } from "../api/productsAPI";
 
 export default function Product() {
   let { id } = useParams();

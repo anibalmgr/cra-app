@@ -2,7 +2,6 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
-import RequireAuth from "./components/auth/RequireAuth";
 import Homepage from "./pages/Homepage";
 import Products from "./pages/Products";
 import Register from "./pages/Register";
@@ -26,14 +25,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route
-            path="/"
-            element={
-              <RequireAuth>
-                <Dashboard />
-              </RequireAuth>
-            }
-          >
+          <Route path="/" element={<Dashboard />}>
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<Product />}>
               <Route path="/products/:id/info" element={<ProductInfo />} />

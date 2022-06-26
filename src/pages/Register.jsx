@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { useAuth } from "../hooks/authAPI";
 import { useFormik } from "formik";
 import Button from "../components/shared/Button";
@@ -7,10 +7,11 @@ import Label from "../components/shared/Label";
 import * as yup from "yup";
 import AlertLabel from "../components/shared/AlertLabel";
 import LogoItem from "../components/shared/LogoItem";
-import { fetchRegister } from "../utils/authAPI";
+import { fetchRegister } from "../api/authAPI";
+// import { useQuery } from "react-query";
 
 export default function Register() {
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
   const validationSchema = yup.object().shape({
     firstname: yup.string().required().required("Please type your firstname"),
     lastname: yup.string().required().required("Please type your lastname"),
@@ -28,7 +29,9 @@ export default function Register() {
     },
 
     onSubmit: (values) => {
-      fetchRegister({first_name: values.firstname, last_name: values.lastname, email: values.email, password: values.password});
+      // const { data, status } = useQuery("isRegistered", () => fetchRegister({first_name: values.firstname, last_name: values.lastname, email: values.email, password: values.password}));
+      const res = fetchRegister({first_name: values.firstname, last_name: values.lastname, email: values.email, password: values.password});
+      console.log(res);
     },
     validate: () => {
       if (formik.status) {
@@ -38,7 +41,7 @@ export default function Register() {
     validationSchema,
   });
 
-  if (loggedIn) return <Navigate to="/products" />;
+  if (loggedIn) {navigate("/login")};
 
   return (
     <div className="h-full w-full overflow-y-auto flex flex-col justify-between pt-12 pb-8 sm:py-12items-center overflow-hidden">
