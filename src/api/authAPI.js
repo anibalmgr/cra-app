@@ -1,4 +1,4 @@
-import { request, getUrl } from "./api";
+import { getUrl } from "./api";
 import axios from "axios";
 
 export async function fetchRegister(user) {
