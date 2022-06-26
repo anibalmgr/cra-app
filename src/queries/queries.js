@@ -1,7 +1,7 @@
 import { useMutation } from "react-query";
 import { client } from "../api/api";
 
-export function useLoginMutation(user) {
+export function useLoginMutation() {
   return useMutation(
     (payload) => {
       return client.post("login", payload);
