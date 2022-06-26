@@ -21,9 +21,7 @@ export const client = axios.create({
 });
 
 export function getUrl(request) {
-  // uncoment the line below if you want to use the local API, don't forget to start the api on the terminal, cd api node app.js
-  return `http://localhost:3001/${request}`;
-  // return `https://server-d-task.herokuapp.com/${request}`;
+  return `${process.env.REACT_APP_API_URL}/${request}`;
 }
 
 export async function request(url, options) {
