@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Homepage from "./pages/Homepage";
 import Products from "./pages/Products";
 import Register from "./pages/Register";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryCache, QueryClient, QueryClientProvider } from "react-query";
 import Dashboard from "./pages/Dashboard";
 import Product from "./pages/Product";
 import ProductInfo from "./components/ProductInfo";
@@ -15,7 +15,20 @@ import Charts from "./pages/Charts";
 import Notifications from "./pages/Notifications";
 import Settings from "./pages/Settings";
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (e) => {
+      const status = e.response.status;
+      const code = e.response.data?.code;
+      if (
+        status === 401 &&
+        (code === "NO_CREDENTIALS" || code === "INVALID_CREDENTIALS")
+      ) {
+        return window.location.assign("/login");
+      }
+    },
+  }),
+});
 
 function App() {
   return (
