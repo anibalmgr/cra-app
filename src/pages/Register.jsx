@@ -9,8 +9,7 @@ import LogoItem from "../components/shared/LogoItem";
 import { useRegisterMutation } from "../queries/queries";
 
 export default function Register() {
-  const { mutate, isSuccess, isError, isIdle, isLoading, error } =
-    useRegisterMutation();
+  const { mutate, isSuccess, isError, error } = useRegisterMutation();
   let navigate = useNavigate();
   const validationSchema = yup.object().shape({
     firstname: yup.string().required().required("Please type your firstname"),
