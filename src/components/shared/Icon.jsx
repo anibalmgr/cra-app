@@ -8,7 +8,7 @@ export default function Icon(props) {
   const IconComponent = iconMap[name] || EmptyIcon;
   return (
     <IconComponent
-      className={`max-h-full max-w-full ${props.className ?? " "}`}
+      className={`max-h-full max-w-full ${props.className ?? ""}`}
     />
   );
 }

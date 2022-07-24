@@ -2,11 +2,10 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
-import RequireAuth from "./components/auth/RequireAuth";
 import Homepage from "./pages/Homepage";
 import Products from "./pages/Products";
 import Register from "./pages/Register";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryCache, QueryClient, QueryClientProvider } from "react-query";
 import Dashboard from "./pages/Dashboard";
 import Product from "./pages/Product";
 import ProductInfo from "./components/ProductInfo";
@@ -16,7 +15,20 @@ import Charts from "./pages/Charts";
 import Notifications from "./pages/Notifications";
 import Settings from "./pages/Settings";
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (e) => {
+      const status = e.response.status;
+      const code = e.response.data?.code;
+      if (
+        status === 401 &&
+        (code === "NO_CREDENTIALS" || code === "INVALID_CREDENTIALS")
+      ) {
+        return window.location.assign("/login");
+      }
+    },
+  }),
+});
 
 function App() {
   return (
@@ -26,14 +38,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route
-            path="/"
-            element={
-              <RequireAuth>
-                <Dashboard />
-              </RequireAuth>
-            }
-          >
+          <Route path="/" element={<Dashboard />}>
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<Product />}>
               <Route path="/products/:id/info" element={<ProductInfo />} />

@@ -10,14 +10,13 @@ export default function Homepage() {
       <div className="text-center">
         <LogoItem />
       </div>
-      <div className="text-center flex flex-col gap-3 sm:gap-6 px-3">
+      <div className="text-center flex flex-col gap-1 px-3 py-4">
         <p className="text-xl sm:text-3xl">
-          Connect to all your Domin products
-          <p className="text-sm sm:text-lg pt-1 sm:pt-4">
-            Configure and access data from your devices remotely, in a secure
-            manner
-          </p>
+          Live updates from your products
         </p>
+          <p className="text-sm sm:text-lg">
+            Configure, see live updates and access data from your products
+          </p>
       </div>
       <div className="flex flex-col gap-2 sm:gap-3 items-center pb-24">
         <Link to="/register">

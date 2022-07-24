@@ -1,58 +1,34 @@
 # Getting Started with Create React App
 
-This app can be accessed online [here](https://heroku-ascend.herokuapp.com)
+Basic app that accepts a user and displays some products. This was an unfinished project that has been transformed into a generic app, that can be user as a boilerplate for another project.
+
+The app includes the following pages:
+
+- Homepage
+- Register
+- Login
+- Products
+- Product
+
+It also include some empty routes/pages.
+
+This app needs a backend to run, which can be found [here](https://github.com/anibalmgr/express-server).
+
 to install:
 
     git clone https://github.com/anibalmgr/cra-app.git
     cd cra-app
+    Create .env file including backend url REACT_APP_API_URL
     npm i
     npm start
 
-There is a simple API running in [heroku](https://server-d-task.herokuapp.com/) if you want to start the api locally:
-
-    cd api
-    run 'node app.js'
-    
-Then go to /src/utils/api.js comment the heroku url and uncomment the local url
-
-## What has been done:
-### design:
-- Vectorize icons and logos
-- Check and save colour and font variables
-- Download product images
-
-### setup
-- Basic CI /CD (tests not implemented) with github and heroku
-- Micro API to get some data
-
 ### npm libraries
+
 - Tailwind, probably my favourite library, with configuration of colours.
-- React router with basic routing
-- React query for api calls, ideally I like to add hooks to handle different API calls, but becasue of the time I decided to just call useQuery in every component.
-- Formik that makes it easier to manage the states in forms.
-
-### Deliveries
-- Homepage
-- Login page, calls the api and receives a token it is storaged into the local storage
-- Register new user
-- Products dashboard that gets all the products from the API, with a search input that returns any substring matching the query.
-
-### To be done
-- Login with cookie instead of a string, could be with jwt.
-- Error handling when fetching data
-- Implement error boundary
-- unit tests and mocking api for testing
-- Plots
-- And design and develop the whole app
-
-
-## API Endpoints
-
-- GET:/login
-- GET:/user
-- GET:/products
-- GET:/images/:id
-
+- React router with basic routing.
+- Axios.
+- React Query.
+- Formik that makes it easier to manage states in forms.
 
 ## Create React App info:
 

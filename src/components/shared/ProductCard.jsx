@@ -1,27 +1,35 @@
 import { Link } from "react-router-dom";
-import { getUrl } from "../../utils/api";
+import { getUrl } from "../../api/api";
 
-function ProductImg({ type }) {
-  const imgTag = type.replace(/\s+/g, "").toLowerCase();
-
+function ProductImg({ product, className }) {
+  const imgTag = product.replace(/\s+/g, "").toLowerCase();
   const imgSrc = getUrl(`images/${imgTag}`);
 
-  return <img src={imgSrc} alt={imgTag} className="object-contain" />;
+  return (
+    <img
+      src={imgSrc}
+      alt={imgTag}
+      className={`object-contain ${className ?? ""}`}
+      loading="lazy"
+    />
+  );
 }
 
 export default function ProductCard(props) {
   return (
     <Link to={`/products/${props.sn}/info`}>
-      <div className="flex drop-shadow-xl h-auto max-h-40 items-center bg-white w-[85vw] max-w-sm sm:h-full gap-3 py-4 px-3">
-        <div className="w-36">
-          <ProductImg type={props.type} />
-        </div>
-        <div className="flex flex-col text-main">
+      <div className="flex drop-shadow-xl h-auto max-h-40 items-center bg-neutral-0 w-[85vw] max-w-sm sm:h-full gap-3 py-4 px-3">
+        <ProductImg
+          className="h-24 w-24 md:w-36 md:h-36"
+          product={props.product}
+        />
+
+        <div className="flex flex-col text-orange-600">
           <p>
-            S/N: <span className="text-content">{props.sn}</span>
+            Product: <span className=" text-content">{props.product}</span>
           </p>
           <p>
-            Type: <span className=" text-content">{props.type}</span>
+            S/N: <span className="text-content">{props.sn}</span>
           </p>
           <p>
             Location: <span className="text-content">{props.location}</span>
@@ -29,9 +37,7 @@ export default function ProductCard(props) {
           <p>
             Status:{" "}
             <span
-              className={
-                props.status === "Active" ? "text-success" : "text-contrast2"
-              }
+              className={props.status === "Active" ? "text-success" : "d text"}
             >
               {props.status}
             </span>
